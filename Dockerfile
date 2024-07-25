@@ -1,1 +1,1 @@
-FROM geonode/geoserver:latest
+FROM osgeo.org/geoserver:2.25.x
