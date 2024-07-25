@@ -1,1 +1,1 @@
-FROM geoserver:latest
+FROM ghcr.io/geoserver/geoserver:latest
