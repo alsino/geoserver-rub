@@ -1,1 +1,1 @@
-FROM ghcr.io/geoserver/geoserver:latest
+FROM vulhub/geoserver:latest
