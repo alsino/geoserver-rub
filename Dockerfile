@@ -1,5 +1,5 @@
-# Use the official GeoServer image as the base image
-FROM osgeo/geoserver:latest
+# Use the GeoNode GeoServer image as the base image
+FROM geonode/geoserver:latest
 
 # Expose port 8080
 EXPOSE 8080
