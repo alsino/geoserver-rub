@@ -1,1 +1,1 @@
-FROM vulhub/geoserver:latest
+FROM oscarfonts/geoserver:2.25.3
