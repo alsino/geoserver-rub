@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add a WMS source</title>
+    <meta property="og:description" content="Add an external Web Map Service raster layer to the map using addSource's tiles option." />
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.css' />
+    <script src='https://unpkg.com/maplibre-gl@4.5.0/dist/maplibre-gl.js'></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        html, body, #map { height: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+        zoom: 10.377194395184336,
+        center: [7.457773562842476,  51.51309087141064]
+    });
+
+    map.on('load', () => {
+        map.addSource('wms-test-source', {
+          'type': 'raster',
+         // Important: WMS must contain '&bbox={bbox-epsg-3857}'' parameter
+         // Important: WMS must be served as transparent png with '&transparent=true' parameter
+          'tiles': [
+            'http://localhost:8080/geoserver/RUB-test/wms?service=WMS&version=1.1.0&request=GetMap&layers=RUB-test%3AUTCI_pytherm_3m_v0.6.0_2024_177_12&bbox={bbox-epsg-3857}&width=768&height=703&srs=EPSG%3A3857&styles=&format=image%2Fpng&transparent=true'
+
+          ],
+          'tileSize': 256
+        });
+        map.addLayer(
+          {
+            'id': 'wms-test-layer',
+            'type': 'raster',
+            'source': 'wms-test-source',
+            'paint': {}
+          },
+          'aeroway_fill'
+        );
+      });
+
+</script>
+</body>
+</html>
