@@ -1,1 +1,1 @@
-FROM osgeo/geoserver:2.25.2
+FROM osgeo/geoserver:2.22.1
